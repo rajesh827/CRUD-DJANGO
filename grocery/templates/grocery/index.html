@@ -14,10 +14,15 @@
     </head>
     <body>
         <section class="section-center">
-            <form>
+            <form method="POST" action="{% url 'grocery:add' %}">
+                {% csrf_token %}
                 <h2>grocery bud</h2>
                 <div class="form-control">
-                    <input type="text" class="form-input" placeholder="e.g. eggs" />
+                    <input type="text"
+                           name="name"
+                           class="form-input"
+                           placeholder="e.g. eggs"
+                           required />
                     <button type="submit" class="btn">add item</button>
                 </div>
             </form>
