@@ -13,7 +13,13 @@
     </head>
     <body>
         <section class="section-center">
-            <!-- Items List -->
+            <form>
+                <h2>grocery bud</h2>
+                <div class="form-control">
+                    <input type="text" class="form-input" placeholder="e.g. eggs" />
+                    <button type="submit" class="btn">add item</button>
+                </div>
+            </form>
             <div class="items">
                 {% for item in items %}
                     <div class="single-item">
@@ -27,9 +33,14 @@
                         <a href="#" class="btn icon-btn edit-btn">
                             <i class="fa-regular fa-pen-to-square"></i>
                         </a>
-                        <button class="btn icon-btn remove-btn" type="submit">
-                            <i class="fa-regular fa-trash-can"></i>
-                        </button>
+                        <form method="POST"
+                              action="{% url 'grocery:delete' item.id %}"
+                              style="display: inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn icon-btn remove-btn">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                        </form>
                     </div>
                 {% empty %}
                     <p style="text-align: center; color: #888;">No items yet. Add one above!</p>
