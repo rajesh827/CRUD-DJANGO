@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: grocery-django
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn djangocrud.wsgi:application"
